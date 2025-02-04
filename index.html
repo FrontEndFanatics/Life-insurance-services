@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Insurance Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Section Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        section {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: black;
+            text-align: center;
+            padding: 60px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Home Section */
+        #home {
+            background-image: url('gt3.jpg');
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        #home h1 {
+            font-size: 4em; /* Adjusted font size for better responsiveness */
+            color: white;
+            text-shadow: 2px 2px 4px rgba(220, 28, 51, 0.7);
+        }
+
+        /* Navbar */
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(90deg, orangered, #3614bc);
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #navbar .logo {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        #navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        #navbar ul li {
+            margin: 0 15px;
+            position: relative; /* For dropdown positioning */
+        }
+
+        #navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #navbar ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ff7e5f;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #3614bc;
+            min-width: 160px;
+            z-index: 1;
+        }
+
+        #navbar ul li:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            padding: 10px 15px;
+            display: block;
+            color: white;
+        }
+
+        .dropdown a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* About Us Section */
+        #about {
+            text-shadow: 2px 2px 4px rgba(138, 61, 70, 0.7);
+            background-color: #e0e0e0; /* Grey background */
+            padding: 60px 20px;
+        }
+
+        #about h2 {
+            font-size: 3em;
+            color: #007BFF;
+        }
+
+        #about .about-images {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        #about img {
+            width: 45%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+
+        #about img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Why Choose Us Section */
+        #whyChooseUs {
+            text-shadow: 2px 2px 4px rgba(220, 28, 51, 0.7);
+            background-color: #9e9e9e;
+            padding: 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+        }
+
+        #whyChooseUs h2 {
+            font-size: 2.5em;
+            color: #2a70bc;
+        }
+
+        #whyChooseUs ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        #whyChooseUs li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #whyChooseUs li:hover {
+            background-color: #0056b3;
+        }
+
+        /* Plans Section */
+        #plans {
+            text-shadow: 2px 2px 4px rgba(171, 84, 26, 0.7);
+            background-color: #556e6344;
+            color: black;
+        }
+
+        #plans h2 {
+            font-size: 3em;
+            color: #007BFF;
+        }
+
+        .plans-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 20px; /* Space between items */
+            padding: 20px;
+        }
+
+        .plan {
+            background-color: #007BFF;
+            color: white;
+            padding: 30px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .plan:hover {
+            transform: scale(1.05);
+        }
+
+        .plan h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .plan img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Calculator Section */
+        #calculator {
+            text-shadow: 2px 2px 4px rgba(51, 176, 134, 0.7);
+            background-color: #e9ecef;
+            color: black;
+        }
+
+        #calculator h2 {
+            font-size: 3em;
+            color: #007BFF;
+        }
+
+        #calculator form {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #calculator input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #007BFF;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        #calculator input:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        #calculator button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Statistics Section */
+        .stats {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .stat {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            transition: transform 0.3s;
+            margin: 10px; /* Add margin for spacing */
+        }
+
+        .stat:hover {
+            transform: scale(1.05);
+        }
+
+        .stat h3 {
+            font-size: 2em;
+        }
+
+        .stat p {
+            font-size: 1.5em;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            text-shadow: 2px 2px 4px rgba(165, 50, 137, 0.7);
+            background-color: #f9f9f9;
+            padding: 60px 20px;
+        }
+
+        #testimonials h2 {
+            font-size: 3em;
+            color: #007BFF;
+        }
+
+        .testimonial {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            transition: transform 0.3s;
+        }
+
+        .testimonial:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        #contact {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            background-color: #007BFF;
+            padding: 60px 20px;
+        }
+
+        #contact h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        #contact form {
+            margin: 20px 20;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #contact input,
+        #contact textarea {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        #contact input:focus,
+        #contact textarea:focus {
+            border-color: #ff7e5f;
+            outline: none;
+        }
+
+        #contact button {
+            padding: 10px 20px;
+            background-color: #ff7e5f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #contact button:hover {
+            background-color: #e67e22;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #9e9e9e;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Team Section */
+        #team {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            background-color: #8e8e8e;
+            padding: 60px 20px;
+        }
+
+        #team h2 {
+            font-size: 3em;
+            color: #007BFF;
+        }
+
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            transition: transform 0.3s;
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 10px;
+        }
+
+        .team-member:hover {
+            transform: scale(1.05);
+        }
+
+        /* FAQ Section */
+        #faq {
+            text-shadow: 2px 2px 4px rgba(102, 30, 30, 0.7);
+            background-color: #e9ecef;
+            padding: 60px 20px;
+        }
+
+        #faq h2 {
+            font-size: 3em;
+            color: #007BFF;
+        }
+
+        .faq-item {
+            margin: 10px 0;
+            padding: 15px;
+            border: 1px solid #007BFF;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .faq-item:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        /* Blog Section */
+        #blog {
+            text-shadow: 2px 2px 4px rgba(181, 212, 66, 0.7);
+            background-color: #7ebe86;
+            padding: 60px 20px;
+        }
+
+        #blog h2 {
+            font-size: 3em;
+            color: #007BFF;
+        }
+
+        #blog article {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #007BFF;
+            border-radius: 5px;
+        }
+
+        #blog article h3 {
+            margin: 0;
+        }
+
+        /* Social Proof Section */
+        #socialProof {
+            background-color: #e9ecef;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        #socialProof h2 {
+            font-size: 3em;
+            color: #007BFF;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .logos img {
+            margin: 10px;
+            width: 100px;
+            height: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .plans-container {
+                flex-direction: column; /* Stack plans vertically */
+                align-items: center;
+            }
+
+            .plan {
+                width: 80%; /* Make plans take up more width on small screens */
+            }
+
+            #home h1 {
+                font-size: 2.5em; /* Adjust font size for smaller screens */
+            }
+
+            #about h2,
+            #contact h2,
+            #team h2,
+            #faq h2,
+            #blog h2,
+            #socialProof h2 {
+                font-size: 2.5em; /* Adjust font size for smaller screens */
+            }
+
+            #navbar ul {
+                flex-direction: column; /* Stack vertically on small screens */
+                align-items: center;
+            }
+
+            #navbar ul li {
+                margin: 10px 0; /* Adjust margin for stacked items */
+            }
+
+            #calculator input,
+            #calculator button,
+            #contact input,
+            #contact textarea {
+                width: 90%; /* Make inputs take up more width */
+                padding: 15px; /* Increase padding for easier tapping */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav id="navbar">
+                <div id="logo">
+                    <img src="L.png" alt="Logo" width="100">
+                </div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li>
+                        <a href="#about">About Us</a>
+                        <div class="dropdown">
+                            <a href="#whyChooseUs">Why Choose Us</a>
+                            <a href="#plans">Plans</a>
+                            <a href="#testimonials">Testimonials</a>
+                            <a href="#team">Our Team</a>
+                            <a href="#faq">FAQs</a>
+                            <a href="#blog">Blog</a>
+                            <a href="#socialProof">Trusted By</a>
+                        </div>
+                    </li>
+                    <li><a href="#calculator">Calculator</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <h1>"Discover Your Family's Future Security"</h1>
+        <p>At the heart of our life insurance services is the commitment to safeguarding your family's future. We understand that life can be unpredictable, and your family's well-being is your top concern. That's why we offer a range of life insurance options designed to provide financial security in times of need. Whether it's ensuring a steady income for your loved ones, covering medical expenses, or supporting education and living costs, our policies are tailored to meet your unique needs. With flexible coverage, affordable premiums, and a range of benefits, our life insurance plans are here to protect what matters most to you — your family.</p>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats">
+        <div class="stat count">
+            <h3>10,000+</h3>
+            <p>Policies Issued</p>
+        </div>
+        <div class="stat count">
+            <h3>95%</h3>
+            <p>Customer Satisfaction</p>
+        </div>
+        <div class="stat count">
+            <h3>20+</h3>
+            <p>Years of Experience</p>
+        </div>
+        <div class="stat count">
+            <h3>500+</h3>
+            <p>Agents Nationwide</p>
+        </div>
+        <div class="stat count">
+            <h3>1,000+</h3>
+            <p>Claims Processed Annually</p>
+        </div>
+        <div class="stat count">
+            <h3>99%</h3>
+            <p>Claims Paid on Time</p>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <h2>ABOUT US</h2>
+        <div class="about-images">
+            <img src="C.jpg" alt="About Us Image 1">
+        </div>
+        <p>At our core, we specialize in offering comprehensive life insurance plans that are carefully designed to meet the unique needs of your family. With years of industry experience, we understand the importance of providing reliable coverage at every stage of life. From protecting your family’s financial future to securing your peace of mind, our plans are built to adapt to your changing needs. Whether you're just starting a family, planning for retirement, or anything in between, we are committed to ensuring you have the right coverage to provide the security and support your loved ones deserve.</p>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="whyChooseUs">
+        <h2>WHY CHOOSE US</h2>
+        <p>Choosing the right life insurance provider is crucial for your family's future. Here are a few reasons why we stand out:</p>
+        <ul>
+            <li>Personalized Plans: Tailored insurance solutions to fit your specific needs.</li>
+            <li>Expert Guidance: Our experienced agents are here to help you navigate your options.</li>
+            <li>Transparent Pricing: No hidden fees, just straightforward pricing.</li>
+            <li>Comprehensive Support: 24/7 customer service to assist you whenever you need.</li>
+            <li>Community Focused: We believe in giving back to the communities we serve.</li>
+        </ul>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans">
+        <h2>OUR INSURANCE PLANS</h2>
+        <div class="plans-container">
+            <div class="plan" onclick="toggleDetails('termLife')">
+                <img src="D.png" alt="Term Life Insurance">
+                <h3>Term Life Protection</h3>
+                <p>Affordable and straightforward coverage for a fixed period of time.</p>
+            </div>
+            <div class="plan-details" id="termLife" style="display:none;">
+                <p>Secure your future with affordable protection designed to fit your needs. Our flexible life insurance plans offer coverage at lower premiums, making it an ideal choice for those seeking financial security for a specific time frame. Whether you're planning for your family's well-being, covering outstanding debts, or ensuring peace of mind during critical years, our plans provide the right balance of affordability and reliability. Choose smart, cost-effective coverage today and safeguard what matters most—your family’s future.</p>
+            </div>
+            <div class="plan" onclick="toggleDetails('wholeLife')">
+                <img src="E.jpg" alt="Whole Life Insurance">
+                <h3>Lifetime Coverage Assurance</h3>
+                <p>Lifetime coverage with investment opportunities.</p>
+            </div>
+            <div class="plan-details" id="wholeLife" style="display:none;">
+                <p>Your future deserves more than just protection—it deserves growth. With a life insurance policy that builds cash value over time, you're not only securing your family's financial stability but also creating a lasting legacy. This plan acts as both a safety net and a smart investment, growing in value while ensuring your loved ones are cared for in every stage of life.</p>
+            </div>
+            <div class="plan" onclick="toggleDetails('universalLife')">
+                <img src="im.jpeg" alt="Universal Life Insurance">
+                <h3>Flexible Life Plans</h3>
+                <p>Flexible coverage with adjustable premiums.</p>
+            </div>
+            <div class="plan-details" id="universalLife" style="display:none;">
+                <p>Life is constantly changing, and your insurance should adapt with it. With our flexible plans, you have the power to adjust your premium and death benefit as your needs evolve. Whether you're starting a family, securing your child’s future, or planning for retirement, your coverage can grow with you.</p>
+            </div>
+            <div class="plan" onclick="toggleDetails('criticalIllness')">
+                <img src="cli.jpg" alt="Critical Illness Insurance">
+                <h3>Critical Health Safeguard</h3>
+                <p>Provides a lump-sum payment if diagnosed with a covered illness.</p>
+            </div>
+            <div class="plan-details" id="criticalIllness" style="display:none;">
+                <p>Life is unpredictable, and medical emergencies can arise when you least expect them. Our insurance plans provide the financial support you need, ensuring access to quality treatment without worrying about costs.</p>
+            </div>
+            <div class="plan" onclick="toggleDetails('accidentalDeath')">
+                <img src="G.png" alt="Accidental Death Insurance">
+                <h3>Accidental Death and Dismemberment Insurance</h3>
+                <p>Financial protection in the event of accidental death or serious injury.</p>
+            </div>
+            <div class="plan-details" id="accidentalDeath" style="display:none;">
+                <p>Life is full of uncertainties, but your family’s security shouldn’t be one of them. Our life insurance services offer more than just financial coverage—they provide peace of mind, ensuring that your loved ones are protected no matter what the future holds.</p>
+            </div>
+            <div class="plan" onclick="toggleDetails('childLife')">
+                <img src="H.png" alt="Child Life Insurance">
+                <h3>Child Life Insurance</h3>
+                <p>Coverage for your child, ensuring financial security for their future.</p>
+            </div>
+            <div class="plan-details" id="childLife" style="display:none;">
+                <p>Every parent dreams of providing the best future for their child, and financial security plays a crucial role in making that dream a reality. With smart savings and life insurance, you can build a strong foundation for your child’s education and future needs.</p>
+            </div>
+            <div class="plan" onclick="toggleDetails('finalExpense')">
+                <img src="I.jpeg" alt="Final Expense Insurance">
+                <h3>Final Expense Insurance</h3>
+                <p>Covers funeral and burial expenses.</p>
+            </div>
+            <div class="plan-details" id="finalExpense" style="display:none;">
+                <p>Life is unpredictable, but your family's security shouldn't be. Our life insurance plans ensure that your loved ones are protected, providing them with the financial support they need when it matters most.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Calculator Section -->
+    <section id="calculator">
+        <h2>PREMIUM CALCULATOR</h2>
+        <form id="premiumCalculator" onsubmit="calculatePremium(event)">
+            <label for="age">Age:</label>
+            <input type="number" id="age" required>
+
+            <label for="coverage">Coverage Amount:</label>
+            <input type="number" id="coverage" required>
+
+            <label for="term">Term (in years):</label>
+            <input type="number" id="term" required>
+
+            <button type="submit">Calculate Premium</button>
+        </form>
+        <div id="premiumResult"></div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2>TESTIMONIALS</h2>
+        <div class="testimonial">
+            <p>"I never thought I would need life insurance, but after speaking with their team, I realized how important it is for my family's future. They made the process easy and understandable!"</p>
+            <h4>- Sarah J.</h4>
+        </div>
+        <div class="testimonial">
+            <p>"The customer service is outstanding! They answered all my questions and helped me find the perfect plan for my needs. Highly recommend!"</p>
+            <h4>- Mark T.</h4>
+        </div>
+        <div class="testimonial">
+            <p>"I appreciate the transparency in pricing and the personalized service. I feel secure knowing my family is protected."</p>
+            <h4>- Emily R.</h4>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section id="team">
+        <h2>MEET OUR TEAM</h2>
+        <div class="team-member">
+            <img src="m1.avif" alt="Team Member 1">
+            <h3>John Doe</h3>
+            <p>Life Insurance Specialist</p>
+        </div>
+        <div class="team-member">
+            <img src="m3.webp" alt="Team Member 2">
+            <h3>Jane Smith</h3>
+            <p>Customer Service Manager</p>
+        </div>
+        <div class="team-member">
+            <img src="m2.jpg" alt="Team Member 3">
+            <h3>Emily Johnson</h3>
+            <p>Financial Advisor</p>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faq">
+        <h2>FAQ'S</h2>
+        <div class="faq-item" onclick="toggleFAQ('faq1')">
+            <h4>What is life insurance?</h4>
+            <p class="faq-answer" id="faq1" style="display:none;">Life insurance is a financial contract between an individual and an insurance company, where the insurer guarantees a sum of money to the policyholder’s beneficiaries in exchange for regular premium payments. This payout, known as the death benefit, is provided in the event of the insured person's death, offering financial security to their loved ones.</p>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ('faq2')">
+            <h4>How do I choose the right plan?</h4>
+            <p class="faq-answer" id="faq2" style="display:none;">Choosing the right plan requires careful consideration of your financial goals, family needs, and budget to ensure long-term stability and peace of mind. Whether you're looking for savings options, insurance coverage, or investment opportunities, it's essential to find a plan that aligns with your current situation and future aspirations.</p>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ('faq3')">
+            <h4>Can I change my policy later?</h4>
+            <p class="faq-answer" id="faq3" style="display:none;">Most insurance policies offer flexibility, allowing you to make adjustments as your needs evolve over time. Whether it's increasing coverage, adding beneficiaries, or modifying terms, insurers typically provide options to update your policy to better align with your current situation. Life events such as marriage, having children, buying a home, or changes in income may require modifications to ensure adequate protection. It’s always a good idea to review your policy periodically and consult with your provider to make necessary adjustments, ensuring that your coverage remains suitable for your circumstances.</p>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog">
+        <h2>LATEST ARTICLES</h2>
+        <article>
+            <h3>Understanding Life Insurance: A Comprehensive Guide</h3>
+            <p>Life insurance is a financial safety net that provides financial support to your loved ones in case of your untimely demise. It ensures that your family can meet essential expenses, pay off debts, and maintain their standard of living even in your absence. There are various types of life insurance, including term life, whole life, and universal life policies, each catering to different financial needs and goals. Understanding the benefits, terms, and conditions of life insurance policies can help you make informed decisions about securing your family’s future.</p>
+        </article>
+        <article>
+            <h3>5 Reasons Why You Need Life Insurance</h3>
+            <p>Life insurance is essential for financial security and peace of mind. Firstly, it provides income replacement for your dependents in case of your sudden passing. Secondly, it helps cover outstanding debts, such as loans or mortgages, preventing financial burdens on your family. Thirdly, it ensures funds for your children's education and future goals. Fourthly, it covers funeral and medical expenses, reducing unexpected financial stress. Lastly, life insurance can be a tool for wealth creation and tax-saving benefits, depending on the type of policy you choose.</p>
+        </article>
+        <article>
+            <h3>How to Choose the Right Life Insurance Policy</h3>
+            <p>Choosing the right life insurance policy requires careful assessment of your financial needs, dependents, and long-term goals. Start by determining the coverage amount based on your income, liabilities, and future expenses. Next, decide between term life insurance, which offers affordable coverage for a fixed period, or whole life insurance, which provides lifelong protection with investment benefits. Compare policies from different insurers, considering factors like premium costs, claim settlement ratio, and additional riders for critical illness or accidental coverage. Consulting a financial advisor can also help you make a well-informed decision.</p>
+        </article>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section id="socialProof">
+        <h2>TRUSTED BY</h2>
+        <div class="logos">
+            <img src="t1.jpg" alt="Insurance Association 1">
+            <img src="t2.jpg" alt="Insurance Association 2">
+            <img src="t3.webp" alt="Insurance Association 3">
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>CONTACT US</h2>
+        <p>If you have any questions or need assistance with choosing the right plan, feel free to contact us. Our customer support team is ready to help you 24/7.</p>
+        <form id="contactForm" onsubmit="sendWhatsAppMessage(event)">
+            <input type="text" id="contactName" placeholder="Your Name" required>
+            <input type="email" id="contactEmail" placeholder="Your Email" required>
+            <textarea id="contactMessage" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Life Insurance Services. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let calculatedPremium = 0; // Variable to store the calculated premium
+
+        function calculatePremium(event) {
+            event.preventDefault();
+
+            const age = parseInt(document.getElementById('age').value);
+            const coverage = parseInt(document.getElementById('coverage').value);
+            const term = parseInt(document.getElementById('term').value);
+
+            const basePremium = 100; // Base premium amount
+            calculatedPremium = basePremium + (age * 2) + (coverage / 1000) + (term * 5);
+
+            document.getElementById('premiumResult').innerText = ` Estimated Premium: $${calculatedPremium.toFixed(2)}`;
+        }
+
+        function toggleDetails(planId) {
+            const details = document.getElementById(planId);
+            details.style.display = details.style.display === 'none' || details.style.display === '' ? 'block' : 'none';
+        }
+
+        function toggleFAQ(faqId) {
+            const answer = document.getElementById(faqId);
+            answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function sendWhatsAppMessage(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const message = document.getElementById('contactMessage').value;
+
+            const whatsappNumber = '7067392748'; // Replace with your WhatsApp number
+            const whatsappMessage = `Name: ${name}\nEmail: ${email}\nMessage: ${message}\nCalculated Premium: $${calculatedPremium.toFixed(2)}`;
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+            window.open(whatsappUrl, '_blank'); // Open WhatsApp with the message
+        }
+    </script>
+</body>
+
+</html>
